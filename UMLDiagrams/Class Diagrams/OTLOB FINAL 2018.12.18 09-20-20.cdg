@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="OTLOB FINAL">
+  <ClassDiagramComponents>
+    <Class name="AddDealGUI" package="GUI" visibility="public" xPosition="1082.0" yPosition="244.0">
+      <Fields>
+        <Field name="cp" type="Container" visibility="private"/>
+        <Field name="r" type="JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="ChooseRestLabel" type="JLabel" visibility="private"/>
+        <Field name="DisCountLabel" type="JLabel" visibility="private"/>
+        <Field name="Discount" type="JTextField" visibility="private"/>
+        <Field name="CodeLabel" type="JLabel" visibility="private"/>
+        <Field name="Code" type="JTextField" visibility="private"/>
+        <Field name="DescriptionLabel" type="JLabel" visibility="private"/>
+        <Field name="Description" type="JTextField" visibility="private"/>
+        <Field name="Adddeal" type="JButton" visibility="private"/>
+        <Field name="Back" type="JButton" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="AddItemGUI" package="GUI" visibility="public" xPosition="1823.0" yPosition="2317.0">
+      <Fields>
+        <Field name="add" type="JButton" visibility="public"/>
+        <Field name="add2" type="JButton" visibility="public"/>
+        <Field name="add3" type="JButton" visibility="public"/>
+        <Field name="add4" type="JButton" visibility="public"/>
+        <Field name="view" type="JButton" visibility="public"/>
+        <Field name="back" type="JButton" visibility="public"/>
+        <Field name="ie" type="int" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="indexR"/>
+          <Argument type="int" name="indexM"/>
+          <Argument type="int" name="i"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="indexR"/>
+          <Argument type="int" name="indexM"/>
+          <Argument type="int" name="i"/>
+          <Argument type="boolean" name="a"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="indexR"/>
+          <Argument type="int" name="i"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="indexR"/>
+          <Argument type="int" name="i"/>
+          <Argument type="boolean" name="a"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="CartGUI" package="GUI" visibility="public" xPosition="3317.0" yPosition="41.0">
+      <Fields>
+        <Field name="back" type="JButton" visibility="private"/>
+        <Field name="check" type="JButton" visibility="private"/>
+        <Field name="placeorder" type="JButton" visibility="private"/>
+        <Field name="x" type="JButton[]" visibility="private"/>
+        <Field name="sum" type="int" visibility="package"/>
+        <Field name="i1" type="int" visibility="package"/>
+        <Field name="oldPrice" type="float" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="Rindex"/>
+          <Argument type="int" name="Mindex"/>
+          <Argument type="int" name="Iindex"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="Rindex"/>
+          <Argument type="int" name="Mindex"/>
+          <Argument type="int" name="Iindex"/>
+          <Argument type="boolean" name="a"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="CheckoutGUI" package="GUI" visibility="public" xPosition="3719.0" yPosition="39.0">
+      <Fields>
+        <Field name="temp" type="boolean" visibility="private"/>
+        <Field name="CommentLabel" type="JLabel" visibility="private"/>
+        <Field name="PaymentMethod" type="JButton" visibility="private"/>
+        <Field name="Comment" type="JTextArea" visibility="private"/>
+        <Field name="AddVoucher" type="JButton" visibility="private"/>
+        <Field name="Back" type="JButton" visibility="private"/>
+        <Field name="TotalNewPriceLabel" type="JLabel" visibility="private"/>
+        <Field name="RestIndex" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="Index"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="CustomerChatGUI" package="GUI" visibility="public" xPosition="1257.0" yPosition="2111.0">
+      <Fields>
+        <Field name="AllMsg" type="JLabel" visibility="private"/>
+        <Field name="MessageTextField" type="JTextField" visibility="private"/>
+        <Field name="Back" type="JButton" visibility="private"/>
+        <Field name="Send" type="JButton" visibility="private"/>
+        <Field name="cp" type="Container" visibility="private"/>
+        <Field name="pw" type="PrintWriter" visibility="private"/>
+        <Field name="is" type="InputStream" visibility="package"/>
+        <Field name="os" type="OutputStream" visibility="package"/>
+        <Field name="toFromserver" type="Socket" visibility="package"/>
+        <Field name="clientName" type="String" visibility="package"/>
+        <Field name="port" type="int" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="Name"/>
+          <Argument type="int" name="port"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="DealsGUI" package="GUI" visibility="public" xPosition="1823.0" yPosition="2122.0">
+      <Fields>
+        <Field name="cp" type="Container" visibility="private"/>
+        <Field name="Back" type="JButton" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="EditItemGUI" package="GUI" visibility="public" xPosition="2400.0" yPosition="2057.0">
+      <Fields>
+        <Field name="menuButtons" type="JButton[]" visibility="private"/>
+        <Field name="backtodashboard" type="JButton" visibility="private"/>
+        <Field name="indexR" type="int" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="indexofRest"/>
+          <Argument type="int" name="indexofMenu"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="EditRestGUI" package="GUI" visibility="public" xPosition="1565.0" yPosition="2111.0">
+      <Fields>
+        <Field name="m" type="menu" visibility="private"/>
+        <Field name="title1" type="JTextField" visibility="private"/>
+        <Field name="b" type="JButton" visibility="private"/>
+        <Field name="C" type="JButton" visibility="private"/>
+        <Field name="F" type="JButton" visibility="private"/>
+        <Field name="indexR" type="int" visibility="package"/>
+        <Field name="Name" type="JLabel" visibility="private"/>
+        <Field name="name" type="JLabel" visibility="private"/>
+        <Field name="restName" type="JTextField" visibility="private"/>
+        <Field name="del" type="JLabel" visibility="private"/>
+        <Field name="deiveryFee" type="JTextField" visibility="private"/>
+        <Field name="est" type="JLabel" visibility="private"/>
+        <Field name="area" type="JLabel" visibility="private"/>
+        <Field name="estimatedTime" type="JTextField" visibility="private"/>
+        <Field name="ewor" type="JLabel" visibility="private"/>
+        <Field name="workingHoursF" type="JTextField" visibility="private"/>
+        <Field name="to" type="JLabel" visibility="private"/>
+        <Field name="workingHoursT" type="JTextField" visibility="private"/>
+        <Field name="check" type="JCheckBox[]" visibility="private"/>
+        <Field name="edit" type="JButton" visibility="private"/>
+        <Field name="delete" type="JButton" visibility="private"/>
+        <Field name="save" type="JButton" visibility="private"/>
+        <Field name="back" type="JButton" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="index"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="index"/>
+          <Argument type="String" name="s"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="HomeGUI" package="GUI" visibility="public" xPosition="1020.0" yPosition="2216.0">
+      <Fields>
+        <Field name="login" type="JButton" visibility="private"/>
+        <Field name="signUp" type="JButton" visibility="private"/>
+        <Field name="CustomerRButton" type="JRadioButton" visibility="private"/>
+        <Field name="AdminRButton" type="JRadioButton" visibility="private"/>
+        <Field name="WaiterRButton" type="JRadioButton" visibility="private"/>
+        <Field name="gr" type="ButtonGroup" visibility="private"/>
+        <Field name="cp" type="Container" visibility="private"/>
+        <Field name="ChooseUser" type="JPanel" visibility="private"/>
+        <Field name="ChooseLoginOrSignup" type="JPanel" visibility="private"/>
+        <Field name="loginPanel" type="JPanel" visibility="private"/>
+        <Field name="u" type="JLabel" visibility="private"/>
+        <Field name="userName" type="JTextField" visibility="private"/>
+        <Field name="p" type="JLabel" visibility="private"/>
+        <Field name="PassWord" type="JPasswordField" visibility="private"/>
+        <Field name="LoginCheck" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="ItemsGUI" package="GUI" visibility="public" xPosition="541.0" yPosition="2216.0">
+      <Fields>
+        <Field name="menuButtons" type="JButton[]" visibility="private"/>
+        <Field name="menuButtons1" type="JButton[]" visibility="private"/>
+        <Field name="WaiterPopularItemButtons" type="JButton[]" visibility="private"/>
+        <Field name="WaiterMenuButtons" type="JButton[]" visibility="private"/>
+        <Field name="AdsItemButtons" type="JButton[]" visibility="private"/>
+        <Field name="Back" type="JButton" visibility="private"/>
+        <Field name="indexR" type="int" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="indexofRest"/>
+          <Argument type="int" name="indexofMenu"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="indexofRest"/>
+          <Argument type="boolean" name="a"/>
+          <Argument type="int" name="indexofMenu"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="indexofRest"/>
+          <Argument type="int" name="indexofMenu"/>
+          <Argument type="boolean" name="a"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="indexofRest"/>
+          <Argument type="int" name="indexofMenu"/>
+          <Argument type="boolean" name="a"/>
+          <Argument type="boolean" name="b"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="MainMenuGUI" package="GUI" visibility="public" xPosition="2499.0" yPosition="2589.0">
+      <Fields>
+        <Field name="cp" type="Container" visibility="private"/>
+        <Field name="AdminButtons" type="JButton[]" visibility="private"/>
+        <Field name="CustomerButtons" type="JButton[]" visibility="private"/>
+        <Field name="WaiterButtons" type="JButton[]" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="admin" name="a"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="customer" name="c"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="waiter" name="w"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="MenusGUI" package="GUI" visibility="public" xPosition="1318.0" yPosition="319.0">
+      <Fields>
+        <Field name="menuButtons" type="JButton[]" visibility="private"/>
+        <Field name="AdsMenuButtons" type="JButton[]" visibility="private"/>
+        <Field name="WaiterMenuButtons" type="JButton[]" visibility="private"/>
+        <Field name="EmenuButtons" type="JButton[]" visibility="private"/>
+        <Field name="title1" type="JTextField" visibility="private"/>
+        <Field name="AddItem" type="JButton" visibility="private"/>
+        <Field name="AddNewMenu" type="JButton" visibility="private"/>
+        <Field name="AddPopularItems" type="JButton" visibility="private"/>
+        <Field name="Finish" type="JButton" visibility="private"/>
+        <Field name="BackFromCustomer" type="JButton" visibility="private"/>
+        <Field name="BackFromSearch" type="JButton" visibility="private"/>
+        <Field name="BackFromWaiter" type="JButton" visibility="private"/>
+        <Field name="BackFromAdmin" type="JButton" visibility="private"/>
+        <Field name="BackToDashBoard" type="JButton" visibility="private"/>
+        <Field name="indexOfRest" type="int" visibility="private"/>
+        <Field name="count" type="int" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="index"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="index"/>
+          <Argument type="boolean" name="a"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="index"/>
+          <Argument type="int" name="a"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="restaurant" name="r"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="restaurant" name="r"/>
+          <Argument type="int" name="y"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="x"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="RecentOrdersGUI" package="GUI" visibility="public" xPosition="2319.0" yPosition="2403.0">
+      <Fields>
+        <Field name="back" type="JButton" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="RestGUI" package="GUI" visibility="public" xPosition="3994.0" yPosition="31.0">
+      <Fields>
+        <Field name="Name" type="JLabel" visibility="private"/>
+        <Field name="name" type="JLabel" visibility="private"/>
+        <Field name="restName" type="JTextField" visibility="private"/>
+        <Field name="del" type="JLabel" visibility="private"/>
+        <Field name="deiveryFee" type="JTextField" visibility="private"/>
+        <Field name="est" type="JLabel" visibility="private"/>
+        <Field name="area" type="JLabel" visibility="private"/>
+        <Field name="estimatedTime" type="JTextField" visibility="private"/>
+        <Field name="ewor" type="JLabel" visibility="private"/>
+        <Field name="workingHoursF" type="JTextField" visibility="private"/>
+        <Field name="to" type="JLabel" visibility="private"/>
+        <Field name="workingHoursT" type="JTextField" visibility="private"/>
+        <Field name="n" type="JLabel" visibility="private"/>
+        <Field name="check" type="JCheckBox[]" visibility="private"/>
+        <Field name="Back" type="JButton" visibility="private"/>
+        <Field name="BackForAdmin" type="JButton" visibility="private"/>
+        <Field name="restButtons" type="JButton[]" visibility="private"/>
+        <Field name="edit" type="JButton[]" visibility="private"/>
+        <Field name="delete" type="JButton[]" visibility="private"/>
+        <Field name="allrestButtons" type="JButton[]" visibility="private"/>
+        <Field name="reviewButtons" type="JButton[]" visibility="private"/>
+        <Field name="AddMenu" type="JButton" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="x"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="boolean" name="A"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="s"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="s"/>
+          <Argument type="String" name="S"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="SignUpGUI" package="GUI" visibility="public" xPosition="2728.0" yPosition="2057.0">
+      <Fields>
+        <Field name="SignupCheck" type="String" visibility="private"/>
+        <Field name="cp" type="Container" visibility="private"/>
+        <Field name="FirstnameLabel" type="JLabel" visibility="private"/>
+        <Field name="firstName" type="JTextField" visibility="private"/>
+        <Field name="LastnameLabel" type="JLabel" visibility="private"/>
+        <Field name="lastName" type="JTextField" visibility="private"/>
+        <Field name="userNameLabel" type="JLabel" visibility="private"/>
+        <Field name="userName" type="JTextField" visibility="private"/>
+        <Field name="passWordLabel" type="JLabel" visibility="private"/>
+        <Field name="password" type="JPasswordField" visibility="private"/>
+        <Field name="phonenumberLabel" type="JLabel" visibility="private"/>
+        <Field name="phoneNumber" type="JTextField" visibility="private"/>
+        <Field name="phonenumberLabel2" type="JLabel" visibility="private"/>
+        <Field name="phoneNumber2" type="JTextField" visibility="private"/>
+        <Field name="EmailLabel" type="JLabel" visibility="private"/>
+        <Field name="email" type="JTextField" visibility="private"/>
+        <Field name="createAdmin" type="JButton" visibility="private"/>
+        <Field name="Back" type="JButton" visibility="private"/>
+        <Field name="street" type="JLabel" visibility="private"/>
+        <Field name="streetName" type="JTextField" visibility="private"/>
+        <Field name="buildingNo" type="JLabel" visibility="private"/>
+        <Field name="b" type="JTextField" visibility="private"/>
+        <Field name="floor" type="JLabel" visibility="private"/>
+        <Field name="f" type="JTextField" visibility="private"/>
+        <Field name="app" type="JLabel" visibility="private"/>
+        <Field name="area" type="JLabel" visibility="private"/>
+        <Field name="p" type="JTextField" visibility="private"/>
+        <Field name="areas" type="JComboBox" visibility="private"/>
+        <Field name="createCustomer" type="JButton" visibility="private"/>
+        <Field name="restaurant" type="JLabel" visibility="private"/>
+        <Field name="r" type="JComboBox&lt;String&gt;" visibility="private"/>
+        <Field name="createWaiter" type="JButton" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="admin" name="Adminn"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="customer" name="Customerr"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="waiter" name="Waiterr"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="StatisticsGUI" package="GUI" visibility="public" xPosition="2522.0" yPosition="2393.0">
+      <Fields>
+        <Field name="Back" type="JButton" visibility="private"/>
+        <Field name="frame" type="ChartFrame" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="UpdateDataGUI" package="GUI" visibility="public" xPosition="3016.0" yPosition="2026.0">
+      <Fields>
+        <Field name="cp" type="Container" visibility="private"/>
+        <Field name="FirstnameLabel" type="JLabel" visibility="private"/>
+        <Field name="firstName" type="JTextField" visibility="private"/>
+        <Field name="LastnameLabel" type="JLabel" visibility="private"/>
+        <Field name="lastName" type="JTextField" visibility="private"/>
+        <Field name="phonenumberLabel" type="JLabel" visibility="private"/>
+        <Field name="phoneNumber" type="JTextField" visibility="private"/>
+        <Field name="phonenumberLabel2" type="JLabel" visibility="private"/>
+        <Field name="phoneNumber2" type="JTextField" visibility="private"/>
+        <Field name="EmailLabel" type="JLabel" visibility="private"/>
+        <Field name="email" type="JTextField" visibility="private"/>
+        <Field name="updateAdmin" type="JButton" visibility="private"/>
+        <Field name="backAdmin" type="JButton" visibility="private"/>
+        <Field name="allValide" type="boolean" visibility="private"/>
+        <Field name="street" type="JLabel" visibility="private"/>
+        <Field name="streetName" type="JTextField" visibility="private"/>
+        <Field name="buildingNo" type="JLabel" visibility="private"/>
+        <Field name="b" type="JTextField" visibility="private"/>
+        <Field name="floor" type="JLabel" visibility="private"/>
+        <Field name="f" type="JTextField" visibility="private"/>
+        <Field name="app" type="JLabel" visibility="private"/>
+        <Field name="p" type="JTextField" visibility="private"/>
+        <Field name="area" type="JLabel" visibility="private"/>
+        <Field name="create" type="JButton" visibility="private"/>
+        <Field name="areas" type="JComboBox" visibility="private"/>
+        <Field name="updateCustomer" type="JButton" visibility="private"/>
+        <Field name="backCustomer" type="JButton" visibility="private"/>
+        <Field name="restaurant" type="JLabel" visibility="private"/>
+        <Field name="updateWaiter" type="JButton" visibility="private"/>
+        <Field name="r" type="JComboBox" visibility="private"/>
+        <Field name="backWaiter" type="JButton" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="admin" name="Admin"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="customer" name="Customer"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="waiter" name="Waiter"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="VisaGUI" package="GUI" visibility="public" xPosition="1279.0" yPosition="2464.0">
+      <Fields>
+        <Field name="cp" type="Container" visibility="private"/>
+        <Field name="CVV" type="JLabel" visibility="private"/>
+        <Field name="CVVTextField" type="JTextField" visibility="private"/>
+        <Field name="CardNumber" type="JLabel" visibility="private"/>
+        <Field name="CardNumberTextField" type="JTextField" visibility="private"/>
+        <Field name="Month" type="JLabel" visibility="private"/>
+        <Field name="MonthTextField" type="JTextField" visibility="private"/>
+        <Field name="Year" type="JLabel" visibility="private"/>
+        <Field name="YearTextField" type="JTextField" visibility="private"/>
+        <Field name="PlaceOrder" type="JButton" visibility="private"/>
+        <Field name="Back" type="JButton" visibility="private"/>
+        <Field name="rIndex" type="int" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="Rindex"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="address" package="otlob" visibility="public" xPosition="727.0" yPosition="1201.0">
+      <Fields>
+        <Field name="BuildingNum" type="String" visibility="public"/>
+        <Field name="floor" type="int" visibility="public"/>
+        <Field name="appNum" type="int" visibility="public"/>
+        <Field name="streetName" type="String" visibility="public"/>
+        <Field name="area" type="String" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="admin" package="otlob" visibility="public" xPosition="2816.0" yPosition="41.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="addDeal" returnType="String" visibility="public">
+          <Argument type="deal" name="D"/>
+        </Method>
+        <Method name="removeDeal" returnType="boolean" visibility="public">
+          <Argument type="String" name="s"/>
+        </Method>
+        <Method name="addrestaurant" returnType="String" visibility="public">
+          <Argument type="restaurant" name="R"/>
+        </Method>
+        <Method name="editRestaurant" returnType="String" visibility="public">
+          <Argument type="offers" name="o"/>
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="editRestaurant" returnType="String" visibility="public">
+          <Argument type="menu" name="m"/>
+          <Argument type="int" name="id"/>
+          <Argument type="int" name="id2"/>
+        </Method>
+        <Method name="removeCustomer" returnType="boolean" visibility="public">
+          <Argument type="String" name="uName"/>
+        </Method>
+        <Method name="removeWaiter" returnType="boolean" visibility="public">
+          <Argument type="String" name="uName"/>
+        </Method>
+        <Method name="updatedata" returnType="String" visibility="public"/>
+        <Method name="login" returnType="int" visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="signUp" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ads" package="otlob" visibility="public" xPosition="2019.0" yPosition="70.0">
+      <Fields>
+        <Field name="itm" type="item" visibility="public"/>
+        <Field name="RName" type="String" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="package"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="cart" package="otlob" visibility="public" xPosition="3147.0" yPosition="960.0">
+      <Fields>
+        <Field name="itemsOfCart" type="ArrayList&lt;item&gt;" visibility="public"/>
+        <Field name="totalPrice" type="float" visibility="public"/>
+        <Field name="comment" type="String" visibility="public"/>
+        <Field name="voucher" type="String" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="addtaxesAndDel" returnType="float" visibility="public">
+          <Argument type="int" name="delFees"/>
+        </Method>
+        <Method name="addtaxes" returnType="float" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="cashier" package="otlob" visibility="public" xPosition="2767.0" yPosition="622.0">
+      <Fields>
+        <Field name="reciptTxt" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="PrintRecipt" returnType="String" visibility="public">
+          <Argument type="cart" name="c"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="cusine" package="otlob" visibility="public" xPosition="3147.0" yPosition="743.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="printToScreen" returnType="String" visibility="public">
+          <Argument type="cart" name="c"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="customer" package="otlob" visibility="public" xPosition="2619.0" yPosition="1223.0">
+      <Fields>
+        <Field name="Address" type="address" visibility="public"/>
+        <Field name="visaTxt" type="String" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="checkVoucher" returnType="boolean" visibility="public">
+          <Argument type="String" name="code"/>
+          <Argument type="restaurant" name="r"/>
+        </Method>
+        <Method name="applyVoucher" returnType="void" visibility="public">
+          <Argument type="String" name="code"/>
+        </Method>
+        <Method name="makereview" returnType="int" visibility="public">
+          <Argument type="restaurant" name="Mac"/>
+          <Argument type="int" name="NumOfStars"/>
+        </Method>
+        <Method name="viewRecentOrders" returnType="ArrayList&lt;Order&gt;" visibility="public"/>
+        <Method name="searchRestaurant" returnType="restaurant" visibility="public">
+          <Argument type="ArrayList&lt;restaurant&gt;" name="r"/>
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="checkSearch" returnType="boolean" visibility="public">
+          <Argument type="ArrayList&lt;restaurant&gt;" name="r"/>
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="savaVisa" returnType="String" visibility="public">
+          <Argument type="visa" name="v"/>
+        </Method>
+        <Method name="AddToOrdersFile" returnType="String" visibility="public">
+          <Argument type="Order" name="o"/>
+        </Method>
+        <Method name="viewNearRestaurants" returnType="void" visibility="public"/>
+        <Method name="addItemToCart" returnType="String" visibility="public">
+          <Argument type="item" name="i"/>
+          <Argument type="cart" name="c"/>
+          <Argument type="int" name="quantity"/>
+        </Method>
+        <Method name="updatedata" returnType="String" visibility="public"/>
+        <Method name="login" returnType="int" visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="signUp" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="days" package="otlob" visibility="public" xPosition="2152.0" yPosition="1905.0">
+      <Fields>
+        <Field name="from" type="int" visibility="public"/>
+        <Field name="to" type="int" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="deal" package="otlob" visibility="public" xPosition="1192.0" yPosition="1059.0">
+      <Fields>
+        <Field name="discountPercent" type="int" visibility="public"/>
+        <Field name="rname" type="String" visibility="public"/>
+        <Field name="code" type="String" visibility="public"/>
+        <Field name="description" type="String" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="n"/>
+          <Argument type="Integer" name="d"/>
+          <Argument type="String" name="code"/>
+          <Argument type="String" name="description"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="expiryDate" package="otlob" visibility="public" xPosition="885.0" yPosition="165.0">
+      <Fields>
+        <Field name="year" type="int" visibility="public"/>
+        <Field name="month" type="int" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="flight" package="otlob" visibility="public" xPosition="3135.0" yPosition="1761.0">
+      <Fields>
+        <Field name="deliveryFee" type="int" visibility="public"/>
+        <Field name="timeEstimated" type="int" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="f"/>
+          <Argument type="int" name="time"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Human" package="otlob" visibility="public" xPosition="1691.0" yPosition="917.0">
+      <Fields>
+        <Field name="UserName" type="String" visibility="public"/>
+        <Field name="fullName" type="name" visibility="public"/>
+        <Field name="email" type="String" visibility="public"/>
+        <Field name="phoneNumber" type="number" visibility="public"/>
+        <Field name="pass" type="String" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="item" package="otlob" visibility="public" xPosition="1995.0" yPosition="319.0">
+      <Fields>
+        <Field name="productName" type="String" visibility="public"/>
+        <Field name="price" type="int" visibility="public"/>
+        <Field name="quantity" type="int" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="n"/>
+          <Argument type="int" name="price"/>
+          <Argument type="int" name="quan"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="n"/>
+          <Argument type="int" name="price"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="menu" package="otlob" visibility="public" xPosition="1584.0" yPosition="338.0">
+      <Fields>
+        <Field name="items" type="ArrayList&lt;item&gt;" visibility="public"/>
+        <Field name="name" type="String" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="n"/>
+          <Argument type="ArrayList&lt;item&gt;" name="i"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="name" package="otlob" visibility="public" xPosition="1208.0" yPosition="1640.0">
+      <Fields>
+        <Field name="firstName" type="String" visibility="public"/>
+        <Field name="lastName" type="String" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="number" package="otlob" visibility="public" xPosition="1407.0" yPosition="1620.0">
+      <Fields>
+        <Field name="num" type="String" visibility="public"/>
+        <Field name="backupNum" type="String" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="offers" package="otlob" visibility="public" xPosition="1691.0" yPosition="1662.0">
+      <Fields>
+        <Field name="popularItems" type="menu" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="menu" name="p"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Order" package="otlob" visibility="public" xPosition="3836.0" yPosition="1831.0">
+      <Fields>
+        <Field name="RestName" type="String" visibility="public"/>
+        <Field name="f" type="flight" visibility="protected"/>
+        <Field name="c" type="cart" visibility="public"/>
+        <Field name="p" type="payment" visibility="protected"/>
+        <Field name="orderID" type="int" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="OTLOB" package="otlob" visibility="public" xPosition="4174.0" yPosition="926.0">
+      <Fields>
+        <Field name="Allrest" type="ArrayList&lt;restaurant&gt;" visibility="public" isStatic="true"/>
+        <Field name="nRArr" type="ArrayList&lt;restaurant&gt;" visibility="public" isStatic="true"/>
+        <Field name="ordersList" type="ArrayList&lt;Order&gt;" visibility="public" isStatic="true"/>
+        <Field name="Places" type="ArrayList&lt;String&gt;" visibility="public" isStatic="true"/>
+        <Field name="CustomerHashmap" type="HashMap&lt;String, customer&gt;" visibility="public" isStatic="true"/>
+        <Field name="AdminHashmap" type="HashMap&lt;String, admin&gt;" visibility="public" isStatic="true"/>
+        <Field name="WaiterHashmap" type="HashMap&lt;String, waiter&gt;" visibility="public" isStatic="true"/>
+        <Field name="DealHashmap" type="HashMap&lt;String, deal&gt;" visibility="public" isStatic="true"/>
+        <Field name="AllPorts" type="HashMap&lt;Integer, Boolean&gt;" visibility="public" isStatic="true"/>
+        <Field name="checkoutGUI" type="CheckoutGUI" visibility="public" isStatic="true"/>
+        <Field name="cartGUI" type="CartGUI" visibility="public" isStatic="true"/>
+        <Field name="restGUI" type="RestGUI" visibility="public" isStatic="true"/>
+        <Field name="menusGUI" type="MenusGUI" visibility="public" isStatic="true"/>
+        <Field name="Customer" type="customer" visibility="public" isStatic="true"/>
+        <Field name="Admin" type="admin" visibility="public" isStatic="true"/>
+        <Field name="Waiter" type="waiter" visibility="public" isStatic="true"/>
+        <Field name="Restaurant" type="restaurant" visibility="public" isStatic="true"/>
+        <Field name="c" type="cart" visibility="public" isStatic="true"/>
+        <Field name="Ads" type="ads" visibility="public" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="payment" package="otlob" visibility="public" xPosition="902.0" yPosition="2026.0">
+      <Fields>
+        <Field name="v" type="visa" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="chooseVorC" returnType="Boolean" visibility="public">
+          <Argument type="int" name="x"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="restaurant" package="otlob" visibility="public" xPosition="3706.0" yPosition="1379.0">
+      <Fields>
+        <Field name="name" type="String" visibility="public"/>
+        <Field name="Menu" type="ArrayList&lt;menu&gt;" visibility="public"/>
+        <Field name="location" type="ArrayList&lt;String&gt;" visibility="public"/>
+        <Field name="category" type="String" visibility="public"/>
+        <Field name="rating" type="int" visibility="public"/>
+        <Field name="id" type="int" visibility="public"/>
+        <Field name="NoOfPeopleRating" type="int" visibility="public"/>
+        <Field name="NoOfTotalStars" type="int" visibility="public"/>
+        <Field name="description" type="String" visibility="public"/>
+        <Field name="delivery" type="flight" visibility="public"/>
+        <Field name="myOffers" type="offers" visibility="public"/>
+        <Field name="timeWork" type="workingHours" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="visa" package="otlob" visibility="public" xPosition="885.0" yPosition="758.0">
+      <Fields>
+        <Field name="cardNum" type="String" visibility="public"/>
+        <Field name="expDate" type="expiryDate" visibility="public"/>
+        <Field name="CVV" type="int" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="waiter" package="otlob" visibility="public" xPosition="3450.0" yPosition="2366.0">
+      <Fields>
+        <Field name="wData" type="String" visibility="package"/>
+        <Field name="waiter" type="String" visibility="package"/>
+        <Field name="orderid" type="String" visibility="package"/>
+        <Field name="wNames" type="String" visibility="package"/>
+        <Field name="r" type="restaurant" visibility="public"/>
+        <Field name="Rname" type="String" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="login" returnType="int" visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="updatedata" returnType="String" visibility="public"/>
+        <Method name="signUp" returnType="String" visibility="public"/>
+        <Method name="sendToCachier" returnType="String" visibility="public">
+          <Argument type="cart" name="c"/>
+        </Method>
+        <Method name="sendToChef" returnType="String" visibility="public">
+          <Argument type="cart" name="c"/>
+        </Method>
+        <Method name="addItemToCart" returnType="String" visibility="public">
+          <Argument type="item" name="i"/>
+          <Argument type="cart" name="c"/>
+          <Argument type="int" name="quantity"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="workingHours" package="otlob" visibility="public" xPosition="2152.0" yPosition="1729.0">
+      <Fields>
+        <Field name="day" type="days" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Interface name="Ilogin" package="otlob" visibility="public" xPosition="2019.0" yPosition="1529.0">
+      <Methods>
+        <Method name="login" returnType="int" visibility="public">
+          <Argument type="String" name="username"/>
+          <Argument type="String" name="password"/>
+        </Method>
+      </Methods>
+    </Interface>
+    <Interface name="IsignUp" package="otlob" visibility="public" xPosition="3330.0" yPosition="582.0">
+      <Methods>
+        <Method name="signUp" returnType="String" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="IupdateData" package="otlob" visibility="public" xPosition="688.0" yPosition="1829.0">
+      <Methods>
+        <Method name="updatedata" returnType="String" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="otlob.admin" target="otlob.IupdateData"/>
+    <HasRelation name="AdminHashmap" source="otlob.OTLOB" target="otlob.admin" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, admin&gt;"/>
+    <UseRelation source="otlob.cusine" target="otlob.cart" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Waiter" source="otlob.OTLOB" target="otlob.waiter" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="otlob.admin" target="otlob.deal" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="otlob.admin" target="otlob.Ilogin"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="otlob.customer" target="otlob.IsignUp"/>
+    <UseRelation source="otlob.admin" target="otlob.offers" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="myOffers" source="otlob.restaurant" target="otlob.offers" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Admin" source="otlob.OTLOB" target="otlob.admin" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Allrest" source="otlob.OTLOB" target="otlob.restaurant" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;restaurant&gt;"/>
+    <HasRelation name="cartGUI" source="otlob.OTLOB" target="GUI.CartGUI" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="timeWork" source="otlob.restaurant" target="otlob.workingHours" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="otlob.customer" target="otlob.item" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="otlob.admin" target="otlob.restaurant" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="otlob.customer" target="otlob.IupdateData"/>
+    <HasRelation name="DealHashmap" source="otlob.OTLOB" target="otlob.deal" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, deal&gt;"/>
+    <HasRelation name="checkoutGUI" source="otlob.OTLOB" target="GUI.CheckoutGUI" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="otlob.waiter" target="otlob.item" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="CustomerHashmap" source="otlob.OTLOB" target="otlob.customer" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, customer&gt;"/>
+    <HasRelation name="WaiterHashmap" source="otlob.OTLOB" target="otlob.waiter" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="HashMap&lt;String, waiter&gt;"/>
+    <HasRelation name="nRArr" source="otlob.OTLOB" target="otlob.restaurant" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;restaurant&gt;"/>
+    <HasRelation name="fullName" source="otlob.Human" target="otlob.name" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="otlob.cashier" target="otlob.cart" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="otlob.customer" target="otlob.visa" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="otlob.customer" target="otlob.Human"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="otlob.waiter" target="otlob.IsignUp"/>
+    <HasRelation name="menusGUI" source="otlob.OTLOB" target="GUI.MenusGUI" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ordersList" source="otlob.OTLOB" target="otlob.Order" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Order&gt;"/>
+    <HasRelation name="phoneNumber" source="otlob.Human" target="otlob.number" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Ads" source="otlob.OTLOB" target="otlob.ads" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="day" source="otlob.workingHours" target="otlob.days" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="f" source="otlob.Order" target="otlob.flight" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="v" source="otlob.payment" target="otlob.visa" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="c" source="otlob.OTLOB" target="otlob.cart" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Customer" source="otlob.OTLOB" target="otlob.customer" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="otlob.waiter" target="otlob.IupdateData"/>
+    <HasRelation name="m" source="GUI.EditRestGUI" target="otlob.menu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="otlob.customer" target="otlob.Order" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="p" source="otlob.Order" target="otlob.payment" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="restGUI" source="otlob.OTLOB" target="GUI.RestGUI" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="otlob.admin" target="otlob.IsignUp"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="otlob.customer" target="otlob.Ilogin"/>
+    <HasRelation name="Restaurant" source="otlob.OTLOB" target="otlob.restaurant" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="items" source="otlob.menu" target="otlob.item" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;item&gt;"/>
+    <IsRelation name="is" source="otlob.waiter" target="otlob.Human"/>
+    <IsRelation name="is" source="otlob.cashier" target="otlob.Human"/>
+    <IsRelation name="is" source="otlob.admin" target="otlob.Human"/>
+    <HasRelation name="expDate" source="otlob.visa" target="otlob.expiryDate" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="popularItems" source="otlob.offers" target="otlob.menu" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="r" source="otlob.waiter" target="otlob.restaurant" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="delivery" source="otlob.restaurant" target="otlob.flight" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="itm" source="otlob.ads" target="otlob.item" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="otlob.admin" target="otlob.menu" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="otlob.customer" target="otlob.restaurant" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Address" source="otlob.customer" target="otlob.address" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="Menu" source="otlob.restaurant" target="otlob.menu" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;menu&gt;"/>
+    <HasRelation name="itemsOfCart" source="otlob.cart" target="otlob.item" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;item&gt;"/>
+    <HasRelation name="c" source="otlob.Order" target="otlob.cart" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="otlob.waiter" target="otlob.Ilogin"/>
+    <UseRelation source="otlob.waiter" target="otlob.cart" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

@@ -1,0 +1,944 @@
+package otlob;
+
+import GUI.AddDealGUI;
+import GUI.HomeGUI;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Scanner;
+
+/**
+ *
+ * @author mark
+ */
+public class OTLOB implements Serializable {
+
+    // definitions of arraylists and hashmaps
+    public static ArrayList<restaurant> Allrest = new ArrayList<restaurant>();
+    public static HashMap<String, customer> CustomerHashmap = new HashMap<String, customer>();
+    public static HashMap<String, admin> AdminHashmap = new HashMap<String, admin>();
+    public static HashMap<String, waiter> WaiterHashmap = new HashMap<String, waiter>();
+    public static ArrayList<Order> ordersList = new ArrayList<>();
+    public static admin Admin = new admin();
+    public static customer Customer = new customer();
+    public static waiter Waiter = new waiter();
+    public static restaurant Restaurant = new restaurant();
+    public static HashMap<String, deal> DealHashmap = new HashMap<>();
+    public static ArrayList<String> Places = new ArrayList<>();
+    public static ArrayList<restaurant> nRArr = new ArrayList<>();
+    public static ArrayList<String> DealDescriptions = new ArrayList<>();
+
+    /**
+     * @param args the command line arguments
+     * @throws java.io.IOException
+     */
+    public static void main(String[] args) throws IOException {
+
+        String orderid = "/media/mark/E/Java/Ordersid.txt";
+        Scanner cin = new Scanner(System.in);
+        int LoginCheck, i, j;
+        String/* SignupCheck = "",*/
+                username = "",
+                password = "";
+        Order o = new Order();
+        ads Ads = new ads();
+        BufferedReader BR;
+        BufferedWriter BW;
+        ObjectInputStream ObjIn;
+        ObjectOutputStream ObjOut;
+
+        Places.add("Heliopolis");
+        Places.add("Sheraton");
+        Places.add("Nasr City");
+        Places.add("Maddi");
+
+        // try to fill restaurants arrayList
+        try {
+            ObjIn = new ObjectInputStream(
+                    new FileInputStream("/media/mark/E/Java/RestsArray.bin"));
+            Allrest = (ArrayList< restaurant>) ObjIn.readObject();
+            ObjIn.close();
+        } catch (ClassNotFoundException | IOException ex) {
+            ObjOut = new ObjectOutputStream(
+                    new FileOutputStream("/media/mark/E/Java/RestsArray.bin"));
+            ObjOut.writeObject(Allrest);
+            ObjOut.close();
+        }
+
+        // try to fill deals arrayList
+        try {
+            ObjIn = new ObjectInputStream(
+                    new FileInputStream("/media/mark/E/Java/DealsDescriptions.bin"));
+            DealDescriptions = (ArrayList< String>) ObjIn.readObject();
+            ObjIn.close();
+        } catch (ClassNotFoundException | IOException ex) {
+            ObjOut = new ObjectOutputStream(
+                    new FileOutputStream("/media/mark/E/Java/DealsDescriptions.bin"));
+            ObjOut.writeObject(DealDescriptions);
+            ObjOut.close();
+        }
+
+        // try to fill deal hashmap
+        try {
+            ObjIn = new ObjectInputStream(
+                    new FileInputStream("/media/mark/E/Java/DealsHashmap.bin"));
+            DealHashmap = (HashMap<String, deal>) ObjIn.readObject();
+            ObjIn.close();
+        } catch (ClassNotFoundException | IOException ex) {
+            ObjOut = new ObjectOutputStream(
+                    new FileOutputStream("/media/mark/E/Java/DealsHashmap.bin"));
+            ObjOut.writeObject(DealHashmap);
+            ObjOut.close();
+        }
+
+        // try to fill ads object
+        try {
+            ObjIn = new ObjectInputStream(
+                    new FileInputStream("/media/mark/E/Java/Ad.bin"));
+            Ads = (ads) ObjIn.readObject();
+            ObjIn.close();
+        } catch (ClassNotFoundException | IOException ex) {
+            ObjOut = new ObjectOutputStream(
+                    new FileOutputStream("/media/mark/E/Java/Ad.bin"));
+            ObjOut.writeObject(Ads);
+            ObjOut.close();
+        }
+
+        // try to fill admins hashmap
+        try {
+            ObjIn = new ObjectInputStream(
+                    new FileInputStream("/media/mark/E/Java/AdminsHashmap.bin"));
+            AdminHashmap = (HashMap<String, admin>) ObjIn.readObject();
+            ObjIn.close();
+        } catch (ClassNotFoundException | IOException ex) {
+            ObjOut = new ObjectOutputStream(
+                    new FileOutputStream("/media/mark/E/Java/AdminsHashmap.bin"));
+            ObjOut.writeObject(AdminHashmap);
+            ObjOut.close();
+        }
+
+        // try to fill customers hashmap
+        try {
+            ObjIn = new ObjectInputStream(
+                    new FileInputStream("/media/mark/E/Java/CustomersHashmap.bin"));
+            CustomerHashmap = (HashMap<String, customer>) ObjIn.readObject();
+            ObjIn.close();
+        } catch (ClassNotFoundException | IOException ex) {
+            ObjOut = new ObjectOutputStream(
+                    new FileOutputStream("/media/mark/E/Java/CustomersHashmap.bin"));
+            ObjOut.writeObject(CustomerHashmap);
+            ObjOut.close();
+        }
+
+        // try to fill waiter hashmap
+        try {
+            ObjIn = new ObjectInputStream(
+                    new FileInputStream("/media/mark/E/Java/WaitersHashmap.bin"));
+            WaiterHashmap = (HashMap<String, waiter>) ObjIn.readObject();
+            ObjIn.close();
+        } catch (ClassNotFoundException | IOException ex) {
+            ObjOut = new ObjectOutputStream(
+                    new FileOutputStream("/media/mark/E/Java/WaitersHashmap.bin"));
+            ObjOut.writeObject(WaiterHashmap);
+            ObjOut.close();
+        }
+        
+        HomeGUI homeGUI = new HomeGUI();
+        homeGUI.setVisible(true);
+        int AorCorW;// choose admin or customer or waiter
+
+        System.out.println("Press 1 for Admin , 2 for Customer , 3 for Waiter,");
+//        System.out.println(Allrest.get(0).name);
+        AorCorW = cin.nextInt();
+        switch (AorCorW)//admin or customer
+        {
+            case 1:// admin
+                if (1 == 1) {
+                    // System.out.println(Allrest.get(0).location[0]+"fady");
+                    System.out.println("Press 1 for signup , 2 for login");
+                    switch (cin.nextInt()) {
+                        /*
+                        case 1://signup for admin
+                            while (!SignupCheck.equals("signUp successful")) {
+                                System.out.println("Enter Your First Name");
+                                Admin.fullName.firstName = cin.next();
+                                System.out.println("Enter Your Last Name");
+                                Admin.fullName.lastName = cin.next();
+                                System.out.println("Enter UserName");
+                                Admin.UserName = cin.next();
+                                System.out.println("Enter Your Password");
+                                Admin.pass = cin.next();
+                                System.out.println("Enter Your Phone Number");
+                                Admin.phoneNumber.num = cin.next();
+                                System.out.println("Enter Your Another Phone Number");
+                                Admin.phoneNumber.backupNum = cin.next();
+                                System.out.println("Enter Your Email");
+                                Admin.email = cin.next();
+                                System.out.println(SignupCheck = Admin.signUp(Admin));
+                            }
+                            break;//end of signup admin
+                         */
+                        case 2://login for admin
+                            System.out.println("Enter Your Username And Password");
+                            username = cin.next();
+                            password = cin.next();
+                            LoginCheck = Admin.login(username, password);
+                            if (LoginCheck == -2) {
+                                System.out.println("not Already user");
+                            } else if (LoginCheck == -1) {
+                                System.out.println("WrongPassword");
+                            } else {
+                                Admin = AdminHashmap.get(username);
+
+                                System.out.println("Welcome To Add Restaurant Press 1 , "
+                                        + "To Add deal Press 2 , "
+                                        + "To Edit Restaurant Menu Press 3 , ");
+                                System.out.println("To Edit Restaurant Offers Press 4 , "
+                                        + "To Remove Customer Press 5 , "
+                                        + "To make Item Ads Press 6 , "
+                                //+ "To Update Your data Press 7 "
+                                );
+                                restaurant newRes = new restaurant();
+                                int IDrest = 0, NumOfPopularItems = 0, NumOfItems = 0;
+                                switch (cin.nextInt()) {
+                                    /*
+                                    case 1:// add new restaurant
+                                        
+                                        System.out.println("Enter Restaurant name");
+                                        newRes.name = cin.next();
+                                        System.out.println("Enter no. of menu categories ");
+                                        newRes.Menu = new ArrayList();
+                                        int num = cin.nextInt();
+                                        for (i = 0; i < num; i++) {
+                                            System.out.println("Name of category " + (i + 1));
+                                            String NameOfCategory = new String();
+                                            NameOfCategory = cin.next();
+                                            System.out.println("No. of Items in menu " + (i + 1));
+                                            NumOfItems = cin.nextInt();
+                                            ArrayList<item> items = new ArrayList(NumOfItems);
+                                            for (j = 0; j < NumOfItems; j++) {
+                                                System.out.println("Enter name and price of Item " + (j + 1));
+                                                item x = new item(cin.next(), cin.nextInt());
+                                                items.add(x);
+                                            }
+                                            menu m = new menu(NameOfCategory, items);
+                                            newRes.Menu.add(m);
+                                        }
+                                        System.out.println("Enter delivery fee ");
+                                        int fee = cin.nextInt();
+                                        System.out.println("Enter estimated time");
+                                        int time = cin.nextInt();
+                                        newRes.delivery = new flight(fee, time);
+                                        System.out.println("Enter no. of delivery areas ");
+                                        String[] deliveryAreas = new String[cin.nextInt()];
+                                        for (i = 0; i < deliveryAreas.length; i++) {
+                                            System.out.println("Enter location " + (i + 1));
+                                            deliveryAreas[i] = cin.next();
+                                             newRes.location.add(deliveryAreas[i]);
+                                        }
+                                       
+                                        newRes.rating = 0;
+                                        newRes.timeWork = new workingHours();
+                                        System.out.println("Working hours from and to: ");
+                                        newRes.timeWork.day = new days();
+                                        newRes.timeWork.day.from = cin.nextInt();
+                                        newRes.timeWork.day.to = cin.nextInt();
+                                        newRes.myOffers = new offers();
+                                        newRes.myOffers.popularItems = new menu();
+                                        newRes.myOffers.popularItems.name = "popular items";
+                                        System.out.println("Enter no. of popular items ");
+                                        NumOfPopularItems = cin.nextInt();
+                                        newRes.myOffers.popularItems.items = new ArrayList(NumOfPopularItems);
+                                        for (j = 0; j < NumOfPopularItems; j++) {
+                                            System.out.println("Enter name and price of Item " + j + 1);
+                                            item z = new item(cin.next(), cin.nextInt());
+                                            newRes.myOffers.popularItems.items.add(z);
+                                        }
+                                        Admin.addrestaurant(newRes);
+                                        System.out.println("The id of this restaurant is: " + newRes.id);
+                                        break;
+                                     */
+ /*
+                                    case 2:// add new deal
+
+                                        System.out.println("Enter Restaurant Name & "
+                                                + "Discount % & "
+                                                + "Code & "
+                                                + "Description");
+                                        deal D = new deal(cin.next(), cin.nextInt(),
+                                                cin.next(), cin.next());
+                                        System.out.println(Admin.addDeal(D));
+                                        break;
+                                     */
+                                    case 3://edit restaurant menu
+                                        i = 0;
+
+                                        System.out.println("Enter the id of the Restaurant");
+                                        IDrest = cin.nextInt();
+                                        IDrest--;
+                                        for (i = 0; i < Allrest.get(IDrest).Menu.size(); i++) {
+
+                                            System.out.println(
+                                                    (i + 1) + " - "
+                                                    + Allrest.get(IDrest).Menu.get(i).name);
+                                        }
+                                        System.out.println("Enter which menu Category to edit ");
+                                        int index = cin.nextInt();
+                                        index--;
+                                        menu m = new menu();
+                                        m = Allrest.get(IDrest).Menu.get(index);
+                                        System.out.println("1-add 2- delete items");
+                                        int choice = cin.nextInt();
+
+                                        if (choice == 1) {
+                                            do {
+                                                System.out.println("item name and price");
+                                                item x = new item(cin.next(), cin.nextInt());
+                                                m.items.add(x);
+                                                System.out.println("to continue adding items press 1");
+                                            } while (cin.nextInt() == 1);
+
+                                        } else if (choice == 2) {
+                                            for (i = 0;
+                                                    i < Allrest.get(IDrest).Menu.get(index).items.size();
+                                                    i++) {
+
+                                                System.out.println(
+                                                        i + " - "
+                                                        + Allrest.get(IDrest).Menu.get(index).items.get(i).productName);
+                                            }
+                                            System.out.println("enter index of item to delete");
+                                            m.items.remove(cin.nextInt());
+                                        }
+                                        System.out.println(Admin.editRestaurant(m, IDrest, index));
+                                        break;
+                                    case 4://edit restaurant offers
+                                        Iterator<restaurant> itr2 = Allrest.iterator();
+                                        i = 0;
+
+                                        System.out.println("Enter the id of the Restaurant");
+                                        IDrest = cin.nextInt();
+                                        IDrest--;
+                                        offers myOffers = new offers();
+                                        myOffers.popularItems = new menu();
+                                        myOffers.popularItems.items = new ArrayList<>();
+                                        myOffers.popularItems.name = "popular items";
+                                        System.out.println("Enter no. of popular Items ");
+                                        NumOfPopularItems = cin.nextInt();
+                                        for (j = 0; j < NumOfPopularItems; j++) {
+                                            System.out.println(
+                                                    "Enter name and price of Item " + (j + 1));
+                                            item x = new item(cin.next(), cin.nextInt());
+                                            myOffers.popularItems.items.add(x);
+                                        }
+                                        System.out.println(Admin.editRestaurant(myOffers, IDrest));
+                                        break;
+                                    /*    
+                                    case 5://remove user
+                                        System.out.println("Enter The Name Of the User");
+                                        if (Admin.removeCustomer(cin.next())) {
+                                            System.out.println("User Is removed");
+                                        } else {
+                                            System.out.println("User Not Found");
+                                        }
+                                        break;
+                                     */
+                                    case 6://make ads
+
+                                        System.out.println("Enter rest num ");
+                                        int t = cin.nextInt();
+                                        System.out.println("Name:" + Allrest.get(t - 1).name);
+                                        System.out.println("Menu:");
+                                        for (i = 0; i < Allrest.get(t - 1).Menu.size(); i++) {
+                                            System.out.println(i + 1 + "- " + Allrest.get(t - 1).Menu.get(i).name);
+                                            for (j = 0; j < Allrest.get(t - 1).Menu.get(i).items.size(); j++) {
+                                                System.out.println(
+                                                        "   "
+                                                        + (j + 1)
+                                                        + "-"
+                                                        + Allrest.get(t - 1).Menu.get(i).items.get(j).productName
+                                                        + "  "
+                                                        + Allrest.get(t - 1).Menu.get(i).items.get(j).price);
+                                            }
+                                        }
+                                        System.out.println("choose menu & choose item from this menu");
+                                        Ads.itm = Allrest.get(t - 1).Menu.get(cin.nextInt() - 1).items.get(cin.nextInt() - 1);
+                                        break;
+
+                                    /* case 7://updata data
+
+                                        System.out.println("Enter Your First Name");
+                                        Admin.fullName.firstName = cin.next();
+                                        System.out.println("Enter Your Last Name");
+                                        Admin.fullName.lastName = cin.next();
+                                        System.out.println("Enter Your Phone Number");
+                                        Admin.phoneNumber.num = cin.next();
+                                        System.out.println("Enter Your Another Phone Number");
+                                        Admin.phoneNumber.backupNum = cin.next();
+                                        System.out.println("Enter Your Email");
+                                        Admin.email = cin.next();
+                                        System.out.println(Admin.updatedata(Admin));
+                                        break;
+                                     */
+                                }
+                            }
+                    }//end of admin
+                } else {
+                    System.out.println("Wrong PassWord");
+                }
+                break;//end of login in admin
+
+            case 2:// customer
+                System.out.println(
+                        "Press 1 for signup , 2 for login");
+                switch (cin.nextInt()) {
+                    /*
+                    case 1:// signup customer
+                        while (!SignupCheck.equals("signUp successful")) {
+                            System.out.println("Enter Your First Name");
+                            Customer.fullName.firstName = cin.next();
+                            System.out.println("Enter Your Last Name");
+                            Customer.fullName.lastName = cin.next();
+                            System.out.println("Enter UserName");
+                            Customer.UserName = cin.next();
+                            System.out.println("Enter Your Password");
+                            Customer.pass = cin.next();
+                            System.out.println("Enter Your Phone Number");
+                            Customer.phoneNumber.num = cin.next();
+                            System.out.println("Enter Your Another Phone Number");
+                            Customer.phoneNumber.backupNum = cin.next();
+                            System.out.println("Enter Your Email");
+                            Customer.email = cin.next();
+                            System.out.println("Enter Your Building number");
+                            Customer.Address.BuildingNum = cin.nextInt();
+                            System.out.println("Enter Your floor number");
+                            Customer.Address.floor = cin.nextInt();
+                            System.out.println("Enter Your appNum");
+                            Customer.Address.appNum = cin.nextInt();
+                            System.out.println("Enter Your street Name");
+                            Customer.Address.streetName = cin.next();
+                            System.out.println("Enter Your area");
+                            Customer.Address.area = cin.next();
+
+                            System.out.println(SignupCheck = Customer.signUp(Customer));
+                        }
+                        break;
+                     */
+                    case 2://login customer
+                        System.out.println("Enter Your Username And Password");
+                        username = cin.next();
+                        password = cin.next();
+                        LoginCheck = Customer.login(username, password);
+                        if (LoginCheck == -2) {
+                            System.out.println("not Already user");
+                        } else if (LoginCheck == -1) {
+                            System.out.println("WrongPassword");
+                        } else {
+                            Customer = CustomerHashmap.get(username);
+                            cart c = new cart();
+
+                            /*    
+                            // try to fill orders ArrayList
+                            try {
+                                ObjIn = new ObjectInputStream(
+                                        new FileInputStream("/media/mark/E/Java/Customers Orders/"
+                                                + Customer.UserName + ".bin"));
+                                ordersList = (ArrayList<Order>) ObjIn.readObject();
+                                ObjIn.close();
+                            } catch (ClassNotFoundException | IOException ex) {
+                                ObjOut = new ObjectOutputStream(
+                                        new FileOutputStream("/media/mark/E/Java/Customers Orders/" + Customer.UserName + ".bin"));
+                                ObjOut.writeObject(ordersList);
+                                ObjOut.close();
+                            }
+                             */
+ /*
+                            System.out.println(
+                                    "welcome, to update your data press 1 , "+
+                                    "to search for a restaurant press 2 , ");*/
+ /*
+                            System.out.println(
+                                    "to view deal press 3 , "
+                                    + "to make review press 4 , ");*/
+ /*
+                            System.out.println(
+                                    "to view near restaurant press 5 , "
+                                    + "to view Recent Orders press 6");*/
+                            switch (cin.nextInt()) {
+                                /*case 1://update customer data
+                                    System.out.println("Enter Your First Name");
+                                    Customer.fullName.firstName = cin.next();
+                                    System.out.println("Enter Your Last Name");
+                                    Customer.fullName.lastName = cin.next();
+                                    System.out.println("Enter Your Phone Number");
+                                    Customer.phoneNumber.num = cin.next();
+                                    System.out.println("Enter Your Another Phone Number");
+                                    Customer.phoneNumber.backupNum = cin.next();
+                                    System.out.println("Enter Your Email");
+                                    Customer.email = cin.next();
+                                    System.out.println("Enter Your Building number");
+                                    Customer.Address.BuildingNum = cin.nextInt();
+                                    System.out.println("Enter Your floor number");
+                                    Customer.Address.floor = cin.nextInt();
+                                    System.out.println("Enter Your appNum");
+                                    Customer.Address.appNum = cin.nextInt();
+                                    System.out.println("Enter Your street Name");
+                                    Customer.Address.streetName = cin.next();
+                                    System.out.println("Enter Your area");
+                                    Customer.Address.area = cin.next();
+                                    System.out.println(Customer.updatedata(Customer));
+                                    break;
+                                 */
+ /* 
+                                case 2://search
+                                    System.out.println("Enter The Name Of The Restaurant You Want To Search");
+                                    String name = cin.next();
+                                    if (Customer.checkSearch(Allrest, name) == true) {
+                                        restaurant sr = Customer.searchRestaurant(Allrest, name);
+                                        System.out.println("Name:" + sr.name);
+                                        System.out.println("Menu:");
+                                        for (i = 0; i < sr.Menu.size(); i++) {
+                                            System.out.println(i + 1 + "- " + sr.Menu.get(i).name);
+                                            for (j = 0; j < sr.Menu.get(i).items.size(); j++) {
+                                                System.out.println(
+                                                        "   "
+                                                        + (j + 1)
+                                                        + "-"
+                                                        + sr.Menu.get(i).items.get(j).productName
+                                                        + "  "
+                                                        + sr.Menu.get(i).items.get(j).price);
+                                            }
+                                        }
+                                        System.out.println("delivery fee: "
+                                                + sr.delivery.deliveryFee);
+                                        System.out.println("estimated time: "
+                                                + sr.delivery.timeEstimated);
+                                        System.out.println("rating" + sr.rating);
+                                        System.out.println("working hours from: "
+                                                + sr.timeWork.day.from
+                                                + " and to: "
+                                                + sr.timeWork.day.to);
+                                        System.out.println("popular items: ");
+                                        for (j = 0; j < sr.myOffers.popularItems.items.size();
+                                                j++) {
+                                            System.out.println(
+                                                    "   "
+                                                    + (j + 1)
+                                                    + "- "
+                                                    + sr.myOffers.popularItems.items.get(j).productName
+                                                    + "  "
+                                                    + sr.myOffers.popularItems.items.get(j).price);
+                                        }
+                                    } else {
+                                        System.out.println("Not Found");
+                                    }
+                                    System.out.println("******THIS IS AD******");
+                                    System.out.println("    " + Ads.itm.productName + " For Only "
+                                            + Ads.itm.price + " LE");
+                                    System.out.println("**************");
+                                    break;
+                                 */
+ /*
+                                case 3://display deals
+                                    BR = new BufferedReader(new FileReader(
+                                            dealDesTxt));
+                                    StringTokenizer ss = new StringTokenizer(BR.readLine(), "~");
+                                    while (ss.hasMoreElements()) {
+                                        System.out.println(ss.nextToken());
+                                    }
+                                    break;
+                                 */
+
+ /*
+                                case 4:// make a review
+                                    i = 0;
+                                    ArrayList<restaurant> nRArr = Customer.viewNearRestaurants();
+
+                                    System.out.println("choose restaurant");
+                                    int RChoosee = cin.nextInt();
+                                    RChoosee--;
+                                    System.out.println("Enter Num From 1 To 5");
+                                    nRArr.get(RChoosee).rating = Customer.makereview(
+                                            nRArr.get(RChoosee), cin.nextInt());
+                                    break;
+                                 */
+                                case 5:// show restaurants and make order
+                                    Customer.viewNearRestaurants();
+
+                                    System.out.println("***************THIS IS AD***************");
+                                    System.out.println("    " + Ads.itm.productName + " For Only "
+                                            + Ads.itm.price + " LE");
+                                    System.out.println("****************************************");
+
+                                    System.out.println("choose restaurant");
+                                    int RChoose = cin.nextInt();
+                                    RChoose--;
+
+                                    System.out.println("choose menu");
+                                    int MChoose = cin.nextInt();
+                                    MChoose--;
+
+                                    int q,
+                                     m;
+                                    i = 0;
+                                    String s = "";
+                                    System.out.println("Choose menu number , "
+                                            + "item number,quantity , to stop "
+                                            + "adding to cart enter"
+                                            + " 1 , 1 , 0");
+                                    m = cin.nextInt();
+                                    i = cin.nextInt();
+                                    q = cin.nextInt();
+                                    s = Customer.addItemToCart(nRArr.get(RChoose).Menu.get(m - 1).items.get(i - 1), c, q);
+                                    System.out.println(s);
+                                    while (m + i + q != 2) {
+                                        System.out.println("Choose menu number , "
+                                                + "item number,quantity , to stop"
+                                                + " adding to cart enter"
+                                                + " 1 , 1 , 0");
+                                        m = cin.nextInt();
+                                        i = cin.nextInt();
+                                        q = cin.nextInt();
+                                        s = Customer.addItemToCart(nRArr.get(RChoose).Menu.get(m - 1).items.get(i - 1), c, q);
+                                        if (m + i + q != 2) {
+                                            System.out.println(s);
+                                        }
+
+                                    }
+
+                                    System.out.println("Choose from popular items number , "
+                                            + "item number,quantity , to stop"
+                                            + " adding to cart enter"
+                                            + "1 , 0");
+                                    i = cin.nextInt();
+                                    q = cin.nextInt();
+                                    if (i + q != 1) {
+                                        s = Customer.addItemToCart(
+                                                nRArr.get(RChoose).myOffers.popularItems.items.get(i - 1),
+                                                c,
+                                                q);
+                                        System.out.println(s);
+                                    }
+                                    while (i + q != 1) {
+                                        System.out.println("Choose from popular items number , "
+                                                + "item number,quantity , to stop"
+                                                + " adding to cart enter"
+                                                + "1 , 0");
+                                        i = cin.nextInt();
+                                        q = cin.nextInt();
+                                        s = Customer.addItemToCart(
+                                                nRArr.get(RChoose).myOffers.popularItems.items.get(i - 1),
+                                                c,
+                                                q);
+                                        if (i + q != 1) {
+                                            System.out.println(s);
+                                        }
+                                    }
+                                    System.out.println("Your Cart");
+                                    i = 0;
+                                    while (i < c.itemsOfCart.size()) {
+                                        System.out.println(c.itemsOfCart.get(i).productName);
+                                        i++;
+                                    }
+                                    System.out.println("Total Price: " + c.totalPrice);
+                                    o.f = nRArr.get(RChoose).delivery;
+                                    o.c = c;
+                                    BR = new BufferedReader(new FileReader(
+                                            orderid));
+                                    o.orderID = Integer.parseInt(BR.readLine());
+                                    BR.close();
+                                    BW = new BufferedWriter(new FileWriter(
+                                            orderid));
+                                    BW.write(Integer.toString(o.orderID + 1));
+                                    BW.close();
+                                    System.out.println("Your Order Id Is " + o.orderID);
+                                    c.totalPrice = c.addtaxesAndDel(nRArr.get(RChoose).delivery.deliveryFee);
+                                    System.out.println(
+                                            "Your Total Price After Adding Taxes And "
+                                            + "delivery Fees: "
+                                            + (c.totalPrice));
+                                    System.out.println("to Add comment Press 1 , else press 0");
+                                    if (cin.nextInt() == 1) {
+                                        System.out.println("write the comment");
+                                        c.comment = cin.next();
+                                    }
+                                    System.out.println("to Add Voucher Press 1 , else press 0");
+                                    if (cin.nextInt() == 1) {
+                                        System.out.println("Write the Voucher");
+                                        c.voucher = cin.next();
+                                        if (Customer.checkVoucher(c.voucher, nRArr.get(RChoose))) {
+                                            c = Customer.applyVoucher(c.voucher, c);
+                                            System.out.println("Voucher Is Applyed");
+                                            System.out.println("The Total new Price is: "
+                                                    + c.totalPrice);
+                                        } else {
+                                            System.out.println("Wrong Voucher");
+                                        }
+                                    }
+                                    System.out.println("If you want to pay cash press 0 "
+                                            + ", visa press 1");
+                                    payment p = new payment();
+                                    if (p.chooseVorC(cin.nextInt()) == true) {
+                                        p.v = new visa();
+                                        System.out.println("Enter Card Number");
+                                        p.v.cardNum = cin.next();
+                                        System.out.println("Enter Month");
+                                        p.v.expDate = new expiryDate();
+                                        p.v.expDate.month = cin.nextInt();
+                                        System.out.println("Enter Year");
+                                        p.v.expDate.year = cin.nextInt();
+                                        System.out.println(Customer.savaVisa(p.v));
+                                    } else {
+                                        System.out.println("You Will Pay cash");
+                                    }
+                                    System.out.println("***************THIS IS AD***************");
+                                    System.out.println("    " + Ads.itm.productName + " For Only "
+                                            + Ads.itm.price + " LE");
+                                    System.out.println("****************************************");
+                                    System.out.println("To Confirm press 1  , else press 0");
+                                    o.RestName = nRArr.get(RChoose).name;
+                                    if (cin.nextInt() == 1) {
+                                        System.out.println(Customer.AddToOrdersFile(o));
+                                    } else {
+                                        System.out.println("Order Is Cancelled");
+                                    }
+                                    break;
+                                /*
+                                case 6://view Recent Orders
+                                    System.out.println("***************THIS IS AD***************");
+                                    System.out.println("    " + Ads.itm.productName + " For Only "
+                                            + Ads.itm.price + " LE");
+                                    System.out.println("****************************************");
+                                 */
+                            }
+
+                        }
+                }
+
+                break;
+            case 3:// waiter
+                if (1 == 1) {
+                    System.out.println("Press 1 for signup , 2 for login");
+                    switch (cin.nextInt()) {
+                        /*
+                        case 1:// signup waiter
+                            
+                            while (!SignupCheck.equals("signUp successful")) {
+                                System.out.println("Enter Your First Name");
+                                Waiter.fullName.firstName = cin.next();
+                                System.out.println("Enter Your Last Name");
+                                Waiter.fullName.lastName = cin.next();
+                                System.out.println("Enter UserName");
+                                Waiter.UserName = cin.next();
+                                System.out.println("Enter Your Password");
+                                Waiter.pass = cin.next();
+                                System.out.println("Enter Your Phone Number");
+                                Waiter.phoneNumber.num = cin.next();
+                                System.out.println("Enter Your Another Phone Number");
+                                Waiter.phoneNumber.backupNum = cin.next();
+                                System.out.println("Enter Your Email");
+                                Waiter.email = cin.next();
+                                i = 0;
+                                for (restaurant r : Allrest) {
+
+                                    System.out.println((i + 1) + "-" + r.name);
+                                    i++;
+                                }
+                                System.out.println("Enter"
+                                        + " restaurant id");
+                                Waiter.id = cin.nextInt();
+                                Waiter.id = Waiter.id - 1;
+                                Waiter.r = Allrest.get(Waiter.id);
+                                System.out.println(Waiter.r.name);
+                                System.out.println(SignupCheck = Waiter.signUp(Waiter));
+                            }
+                            break;
+                         */
+                        case 2://login waiter
+                            System.out.println("Enter Your Username And Password");
+                            username = cin.next();
+                            password = cin.next();
+                            LoginCheck = Waiter.login(username, password);
+                            if (LoginCheck == -2) {
+                                System.out.println("not Already user");
+                            } else if (LoginCheck == -1) {
+                                System.out.println("WrongPassword");
+                            } else {
+                                Waiter = WaiterHashmap.get(username);
+                                cart c = new cart();
+                             /*   System.out.println(
+                                        "welcome, to update your data press 1 , "+
+                                        "to view menu of a restaurant press 2 , ");*/
+                                switch (cin.nextInt()) {
+                                    /*case 1://update wiater data
+                                        
+                                        System.out.println("Enter Your First Name");
+                                        Waiter.fullName.firstName = cin.next();
+                                        System.out.println("Enter Your Last Name");
+                                        Waiter.fullName.lastName = cin.next();
+                                        System.out.println("Enter Your Phone Number");
+                                        Waiter.phoneNumber.num = cin.next();
+                                        System.out.println("Enter Your Another Phone Number");
+                                        Waiter.phoneNumber.backupNum = cin.next();
+                                        System.out.println("Enter Your Email");
+                                        Waiter.email = cin.next();
+                                        System.out.println(Waiter.updatedata(Waiter));
+                                        break;
+                                     */
+                                    case 2:
+                                        Waiter.r = Allrest.get(Waiter.id);
+                                        System.out.println("Name:" + Waiter.r.name);
+                                        System.out.println("Menu:");
+                                        for (i = 0; i < Waiter.r.Menu.size(); i++) {
+                                            System.out.println(i + 1 + "- " + Waiter.r.Menu.get(i).name);
+                                            for (j = 0; j < Waiter.r.Menu.get(i).items.size(); j++) {
+                                                System.out.println(
+                                                        "   "
+                                                        + (j + 1)
+                                                        + "-"
+                                                        + Waiter.r.Menu.get(i).items.get(j).productName
+                                                        + "  "
+                                                        + Waiter.r.Menu.get(i).items.get(j).price);
+                                            }
+                                        }
+                                        System.out.println("estimated time: "
+                                                + Waiter.r.delivery.timeEstimated);
+                                        System.out.println("popular items: ");
+                                        for (j = 0; j < Waiter.r.myOffers.popularItems.items.size();
+                                                j++) {
+                                            System.out.println(
+                                                    "   "
+                                                    + (j + 1)
+                                                    + "- "
+                                                    + Waiter.r.myOffers.popularItems.items.get(j).productName
+                                                    + "  "
+                                                    + Waiter.r.myOffers.popularItems.items.get(j).price);
+                                        }
+                                        int q,
+                                         m;
+                                        i = 0;
+                                        String s = "";
+                                        System.out.println("Choose menu number , "
+                                                + "item number,quantity , to stop "
+                                                + "adding to cart enter"
+                                                + " 1 , 1 , 0");
+                                        m = cin.nextInt();
+                                        i = cin.nextInt();
+                                        q = cin.nextInt();
+                                        s = Waiter.addItemToCart(Waiter.r.Menu.get(m - 1).items.get(i - 1), c, q);
+                                        System.out.println(s);
+                                        while (m + i + q != 2) {
+                                            System.out.println("Choose menu number , "
+                                                    + "item number,quantity , to stop"
+                                                    + " adding to cart enter"
+                                                    + " 1 , 1 , 0");
+                                            m = cin.nextInt();
+                                            i = cin.nextInt();
+                                            q = cin.nextInt();
+                                            s = Waiter.addItemToCart(Waiter.r.Menu.get(m - 1).items.get(i - 1), c, q);
+                                            if (m + i + q != 2) {
+                                                System.out.println(s);
+                                            }
+
+                                        }
+
+                                        System.out.println("Choose from popular items number , "
+                                                + "item number,quantity , to stop"
+                                                + " adding to cart enter"
+                                                + "1 , 0");
+                                        i = cin.nextInt();
+                                        q = cin.nextInt();
+                                        if (i + q != 1) {
+                                            s = Waiter.addItemToCart(Waiter.r.myOffers.popularItems.items.get(i - 1), c, q);
+                                            System.out.println(s);
+                                        }
+                                        while (i + q != 1) {
+                                            System.out.println("Choose from popular items number , "
+                                                    + "item number,quantity , to stop"
+                                                    + " adding to cart enter"
+                                                    + "1 , 0");
+                                            i = cin.nextInt();
+                                            q = cin.nextInt();
+                                            s = Waiter.addItemToCart(Waiter.r.Menu.get(m - 1).items.get(i - 1), c, q);
+                                            if (i + q != 1) {
+                                                System.out.println(s);
+                                            }
+                                        }
+                                        System.out.println("User Orders");
+                                        i = 0;
+                                        while (i < c.itemsOfCart.size()) {
+                                            System.out.println(c.itemsOfCart.get(i).productName);
+                                            i++;
+                                        }
+                                        System.out.println("Total Price: " + c.totalPrice);
+
+                                        System.out.println("to Add comment Press 1 , else press 0");
+                                        if (cin.nextInt() == 1) {
+                                            System.out.println("write the comment");
+                                            c.comment = cin.next();
+                                        }
+
+                                        System.out.println("To Confirm press 1  , else press 0");
+                                        if (cin.nextInt() == 1) {
+                                            System.out.println(Waiter.sendToCachier(c));
+                                            System.out.println(Waiter.sendToChef(c));
+                                            return;
+                                        }
+                                        System.out.println("Order Is Cancelled");
+                                        break;
+                                }
+                            }
+                    }
+                }
+
+                break;
+
+        }
+        ObjOut = new ObjectOutputStream(
+                new FileOutputStream("D:\\Java\\RestsArray.bin"));
+        ObjOut.writeObject(Allrest);
+        ObjOut.close();
+
+        ObjOut = new ObjectOutputStream(
+                new FileOutputStream("D:\\Java\\Ad.bin"));
+        ObjOut.writeObject(Ads);
+        ObjOut.close();
+
+        ObjOut = new ObjectOutputStream(
+                new FileOutputStream("D:\\Java\\AdminsHashmap.bin"));
+        ObjOut.writeObject(AdminHashmap);
+        ObjOut.close();
+
+        ObjOut = new ObjectOutputStream(
+                new FileOutputStream("D:\\Java\\CustomersHashmap.bin"));
+        ObjOut.writeObject(CustomerHashmap);
+        ObjOut.close();
+
+        ObjOut = new ObjectOutputStream(
+                new FileOutputStream("D:\\Java\\WaitersHashmap.bin"));
+        ObjOut.writeObject(WaiterHashmap);
+        ObjOut.close();
+
+        ObjOut = new ObjectOutputStream(
+                new FileOutputStream("/media/mark/E/Java/DealsHashmap.bin"));
+        ObjOut.writeObject(DealHashmap);
+        ObjOut.close();
+
+        ObjOut = new ObjectOutputStream(
+                new FileOutputStream("/media/mark/E/Java/DealsDescriptions.bin"));
+        ObjOut.writeObject(DealDescriptions);
+        ObjOut.close();
+
+    }
+}
+
